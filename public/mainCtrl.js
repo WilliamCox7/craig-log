@@ -24,9 +24,11 @@ angular.module('craig').controller('mainCtrl', function($scope, mainSvc) {
   }
 
   $scope.addLiner = function(liner) {
-    $scope.log.push({liner: liner, date: new Date(), canEdit: true});
-    mainSvc.setLiner({liner: liner, date: new Date()}).then((message) => {});
-    $scope.liner = "";
+    if (liner) {
+      $scope.log.push({liner: liner, date: new Date(), canEdit: true});
+      mainSvc.setLiner({liner: liner, date: new Date()}).then((message) => {});
+      $scope.liner = "";
+    }
   }
 
   $scope.editLiner = function(liner) {
